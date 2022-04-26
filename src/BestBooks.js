@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Carousel } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
+let SERVER = process.env.REACT_APP_SERVER;
+
 class BestBooks extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +17,8 @@ class BestBooks extends React.Component {
 
   getBooks = async () => {
     try {
-      let booksUrl = 'http://localhost:3001/books';
+      // let booksUrl = 'http://localhost:3001/books';
+      let booksUrl = `${SERVER}/books`;
       let booksResults = await axios.get(booksUrl);
       console.log(booksResults.data);
       this.setState({
