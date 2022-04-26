@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Carousel } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
+let SERVER = process.env.REACT_APP_SERVER;
+
 class BestBooks extends React.Component {
   constructor(props) {
     super(props);
@@ -12,10 +14,11 @@ class BestBooks extends React.Component {
   }
 
   /* TODO: Make a GET request to your API to fetch all the books from the database  */
-
+  
   getBooks = async () => {
     try {
-      let booksUrl = 'http://localhost:3001/books';
+      let booksUrl = `${SERVER}/books`;
+      // let booksUrl = `http://localhost:3001`;
       let booksResults = await axios.get(booksUrl);
       console.log(booksResults.data);
       this.setState({
@@ -39,7 +42,7 @@ class BestBooks extends React.Component {
 
       <>
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
-        
+
         <Carousel>
           {this.state.books.length > 0 ? (
             this.state.books.map((book) => {
@@ -48,7 +51,8 @@ class BestBooks extends React.Component {
                   <img
                     className="d-block w-100"
                     src="https://place-hold.it/800x400/000"
-                    alt="Best Books" />
+                    alt="Best Books"
+                  />
                   <Carousel.Caption>
                     <h3 style={{
                       backgroundColor: 'lightblue',
