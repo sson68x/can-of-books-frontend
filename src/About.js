@@ -4,7 +4,7 @@ class Profile extends Component {
 
   render() {
     /* TODO: render information about the developers */
-    return <p>Jason & Simon</p>
+    return <p>Jason Wilson & Simon Son</p>
   }
 };
 
