@@ -6,6 +6,8 @@ import BookFormModal from './BookFormModal';
 
 let SERVER = process.env.REACT_APP_SERVER;
 
+let SERVER = process.env.REACT_APP_SERVER;
+
 class BestBooks extends React.Component {
   constructor(props) {
     super(props);

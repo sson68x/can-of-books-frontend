@@ -58,7 +58,9 @@ Lab partner: Jason Wilson
 
 ## Time Estimates
 
-Name of feature: 1. Set up your repositories
+### Lab 12
+
+Name of feature: 1. Create
 
 Estimate of time needed to complete: 2 hours
 
@@ -68,22 +70,12 @@ Finish time: 3:30
 
 Actual time needed to complete: 2 hours
 
-Name of feature: 2. Storage
+Name of feature: 2. Delete
 
-Estimate of time needed to complete: 1 hour
+Estimate of time needed to complete: 2 hour
 
 Start time: 3:30
 
-Finish time: 4:30
+Finish time: 5:30
 
-Actual time needed to complete: 1 hour
-
-Name of feature: 3. Book Component
-
-Estimate of time needed to complete: 2 hours
-
-Start time: 4:45
-
-Finish time: 7:50
-
-Actual time needed to complete: 3 hours 5 min
+Actual time needed to complete: 2 hour
