@@ -3,8 +3,8 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Carousel, Button } from 'react-bootstrap';
 import BookFormModal from './BookFormModal';
+import UpdateFormModal from './UpdateFormModal';
 
-let SERVER = process.env.REACT_APP_SERVER;
 
 let SERVER = process.env.REACT_APP_SERVER;
 
@@ -13,7 +13,8 @@ class BestBooks extends React.Component {
     super(props);
     this.state = {
       books: [],
-      showModal: false
+      showAddModal: false,
+      bookToUpdate: null
     }
   }
 
@@ -52,7 +53,24 @@ class BestBooks extends React.Component {
         books: updatedBooks
       })
     } catch (error) {
-      console.log(`We have an error:`)
+      console.log(`We have an error:`, error.response.data);
+    }
+  }
+
+  updateBook = async (bookToUpdate) => {
+    try {
+      let booksUrl = `${SERVER}/books/${bookToUpdate._id}`;
+      let updatedBook = await axios.put(booksUrl, bookToUpdate);
+      let updatedBookArr = this.state.books.map(existingBook => {
+        return existingBook._id === bookToUpdate._id
+          ? updatedBook.data
+          : existingBook;
+      });
+      this.setState({
+        books: updatedBookArr
+      });
+    } catch (error) {
+      console.log('We have an error: ', error.response.data);
     }
   }
 
@@ -65,6 +83,7 @@ class BestBooks extends React.Component {
       status: e.target.status.value
     }
     this.postBook(book);
+    this.hideModal();
   }
 
   componentDidMount() {
@@ -73,17 +92,27 @@ class BestBooks extends React.Component {
 
   hideModal = () => {
     this.setState({
-      showAddModal: false
+      showAddModal: false,
+      showUpdateModal: false
     })
   }
 
   showAddModal = () => {
     this.setState({
-      showAddModal: true,
+      showAddModal: true
+    })
+  }
+
+  showUpdateModal = (book) => {
+    this.setState({
+      showUpdateModal: true,
+      bookToUpdate: book
     })
   }
 
   render() {
+
+    console.log(this.state.bookToUpdate);
 
     return (
       <>
@@ -96,7 +125,7 @@ class BestBooks extends React.Component {
                   <Carousel.Item key={book._id}>
                     <img
                       className="d-block w-100"
-                      src="https://place-hold.it/800x400/000"
+                      src="./img/canofbooks.jpg"
                       alt="Best Books"
                     />
                     <Carousel.Caption>
@@ -108,15 +137,21 @@ class BestBooks extends React.Component {
                       }}>
                         {book.title} by {book.author}
                       </h3>
+
                       <Button
-                      style={{
-                        margin: '10px'
-                      }}
-                        onClick={this.showAddModal}
-                        type="submit" variant="primary">Add Book
+                        style={{
+                          margin: '5px'
+                        }}
+                        onClick={() => this.deleteBook(book._id)}
+                        variant="secondary">Delete Book
                       </Button>
-                      <Button onClick={() => this.deleteBook(book._id)}
-                        type="submit" variant="secondary">Delete Book
+
+                      <Button
+                        style={{
+                          margin: '5px'
+                        }}
+                        onClick={() => this.showUpdateModal(book)}
+                      > Update Book
                       </Button>
                     </Carousel.Caption>
                   </Carousel.Item>
@@ -128,12 +163,29 @@ class BestBooks extends React.Component {
               )}
           </Carousel>
 
+          <div
+            className="text-center">
+            <Button
+              style={{ margin: '10px' }}
+              onClick={this.showAddModal}
+              variant="primary">
+              Add Book
+            </Button>
+          </div>
+
           <BookFormModal
             showAddModal={this.state.showAddModal}
-            // showDeleteModal={this.state.showDeleteModal}
             hideModal={this.hideModal}
             handleBookSubmit={this.handleBookSubmit}
           />
+
+          {this.state.bookToUpdate &&
+            <UpdateFormModal
+              showUpdateModal={this.state.showUpdateModal}
+              hideModal={this.hideModal}
+              handleUpdateSubmit={this.updateBook}
+              bookToUpdate={this.state.bookToUpdate}
+            />}
         </main>
       </>
     )
