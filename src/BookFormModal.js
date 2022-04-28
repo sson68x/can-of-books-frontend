@@ -29,8 +29,8 @@ class BookFormModal extends React.Component {
                   <Form.Control type="text" />
                 </Form.Group>
                 <Modal.Footer>
-                <Button onClick={this.props.hideModal} variant="secondary">Close</Button>
-                <Button onClick={this.props.hideModal} type="submit" variant="primary">Add Book</Button>
+                  <Button onClick={this.props.hideModal} type="submit" variant="primary">Add Book</Button>
+                  <Button onClick={this.props.hideModal} variant="secondary">Close</Button>
                 </Modal.Footer>
               </Form>
             </Modal.Body>
