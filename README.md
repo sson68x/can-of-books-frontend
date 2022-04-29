@@ -58,24 +58,14 @@ Lab partner: Jason Wilson
 
 ## Time Estimates
 
-### Lab 12
+### Lab 13
 
-Name of feature: 1. Create
+Name of feature: 1. Update
 
-Estimate of time needed to complete: 2 hours
+Estimate of time needed to complete: 3 hours
 
-Start time: 1:30
+Start time: 2:30
 
-Finish time: 3:30
+Finish time: 6:30
 
-Actual time needed to complete: 2 hours
-
-Name of feature: 2. Delete
-
-Estimate of time needed to complete: 2 hour
-
-Start time: 3:30
-
-Finish time: 5:30
-
-Actual time needed to complete: 2 hour
+Actual time needed to complete: 4 hours
