@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-class Profile extends Component {
+class Devprofile extends Component {
 
   render() {
     /* TODO: render information about the developers */
@@ -8,4 +8,4 @@ class Profile extends Component {
   }
 };
 
-export default Profile;
+export default Devprofile;
