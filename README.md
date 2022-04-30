@@ -58,14 +58,14 @@ Lab partner: Jason Wilson
 
 ## Time Estimates
 
-### Lab 13
+### Lab 15
 
-Name of feature: 1. Update
+Name of feature: 1. Authentication
 
 Estimate of time needed to complete: 3 hours
 
-Start time: 2:30
+Start time: 2:00
 
-Finish time: 6:30
+Finish time: --
 
-Actual time needed to complete: 4 hours
+Actual time needed to complete: Not completed yet
