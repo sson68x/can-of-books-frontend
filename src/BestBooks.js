@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Carousel, Button } from 'react-bootstrap';
 import BookFormModal from './BookFormModal';
 import UpdateFormModal from './UpdateFormModal';
+import { withAuth0 } from '@auth0/auth0-react';
 
 
 let SERVER = process.env.REACT_APP_SERVER;
@@ -20,12 +21,28 @@ class BestBooks extends React.Component {
 
   getBooks = async () => {
     try {
-      let booksUrl = `${SERVER}/books`;
-      let booksResults = await axios.get(booksUrl);
-      console.log(booksResults.data);
-      this.setState({
-        books: booksResults.data
-      })
+      if (this.props.auth0.isAuthenticated) {
+        const res = await this.props.auth0.getIdTokenClaims();
+        const jwt = res.__raw;
+        console.log(jwt);
+        const config = {
+          method: 'get',
+          baseURL: process.env.REACT_APP_SERVER,
+          url: '/books',
+          headers: { Authorization: `Bearer ${jwt}` }
+        }
+        const booksResults = await axios(config);
+        this.setState({
+          books: booksResults.data
+        })
+      }
+      // let booksUrl = `${SERVER}/books`;
+      // let booksResults = await axios.get(booksUrl);
+      // console.log(booksResults.data);
+      // this.setState({
+      //   books: booksResults.data
+      // })
+
     } catch (error) {
       console.log('Unable to get books');
     }
@@ -192,4 +209,4 @@ class BestBooks extends React.Component {
   }
 }
 
-export default BestBooks;
+export default withAuth0(BestBooks);

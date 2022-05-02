@@ -64,8 +64,8 @@ Name of feature: 1. Authentication
 
 Estimate of time needed to complete: 3 hours
 
-Start time: 2:00
+Start date: Apr 29
 
-Finish time: --
+Finish date: May 1
 
-Actual time needed to complete: Not completed yet
+Actual time needed to complete: 6 hours
