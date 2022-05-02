@@ -24,9 +24,11 @@ class App extends React.Component {
               {
                 this.props.auth0.isAuthenticated
                   ?
-                  <BestBooks />
-                  : <><h2>Welcome! Please login.</h2></>
+                  <BestBooks/>
+                  :
+                  <><h2>Welcome! Please login.</h2></>
               }
+            
             </Route>
             <Route exact path="/About">
               <Devprofile />
@@ -35,14 +37,8 @@ class App extends React.Component {
               <AuthButtons />
               {
                 this.props.auth0.isAuthenticated
-                  ?
-                  <>
-                    <Profile />
-                    <Route exact path="/Profile.js">
-                    </Route>
-                  </>
-                  :
-                  <></>
+                  ? <Profile />
+                  : <p>Please login</p>
               }
               {/* <BestBooks /> */}
             </Route>
